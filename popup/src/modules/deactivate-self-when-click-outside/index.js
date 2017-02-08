@@ -14,16 +14,21 @@ class DeactivateSelfWhenClickOutside extends Component {
         super(props);
         this.state={
             isActive: false
-        }
+        };
         this._selfBeingClicked = false;
+        this._componentIsMounted = false;
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.handleSelfBeingClicked = this.handleSelfBeingClicked.bind(this);
     }
 
     componentDidMount() {
-        document.addEventListener('click', this.handleClickOutside.bind(this), false );
+        this._componentIsMounted = true;
+        document.addEventListener('click', this.handleClickOutside, false );
     }
 
     componentWillUnmount() {
-        document.removeEventListener('click', this.handleClickOutside.bind(this), false );
+        this._componentIsMounted = false;
+        document.removeEventListener('click', this.handleClickOutside, false );
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -61,20 +66,20 @@ class DeactivateSelfWhenClickOutside extends Component {
 
             if (hasMoreThenOneChildren) {
                 this.props.children.forEach(child=>{
-                    const clone = React.cloneElement(child, {isActive: this.state.isActive})
-                    clonedChildren.push(clone)
+                    const clone = React.cloneElement(child, {isActive: this.state.isActive});
+                    clonedChildren.push(clone);
                 });
             }
             if (hasOnlyOneChild) {
-                const clone = React.cloneElement(this.props.children, {isActive: this.state.isActive})
-                clonedChildren.push(clone)
+                const clone = React.cloneElement(this.props.children, {isActive: this.state.isActive});
+                clonedChildren.push(clone);
             }
 
 
         return (
             <div
                 className={className}
-                onClick={ (e)=>{this.handleSelfBeingClicked.call(this, e)} }>
+                onClick={ (e)=>{this.handleSelfBeingClicked(e);} }>
                 {
                     clonedChildren.map((clonedChild, i)=>{
                         return <div key={i}> {clonedChild} </div>
@@ -96,5 +101,6 @@ const Demo = () => (
 
 export default DeactivateSelfWhenClickOutside;
 export {Demo};
+
 
 
