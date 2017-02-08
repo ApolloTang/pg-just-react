@@ -3,8 +3,15 @@
 @import "~common/styles-init/index";
 
 :local(.module-style) {
-    .module-style(4px);
-    background: #aaf;
+    display: none;
+    height: 500px;
+    &.is-active{
+        position: absolute;
+        left: 50px;
+        display: block;
+        background: #aaf;
+        .module-style(4px);
+    }
 }
 
 /* +++++++++++++++++++++++++++++++++ style-file[end]   modules/module-a/style.less */

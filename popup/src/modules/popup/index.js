@@ -17,7 +17,7 @@ export default class Popup extends React.Component {
         if (this.props.isActive) {
             return (
                 <div
-                    className={`popup ${style['module-style']}`}
+                    className={`popup is-active ${style['module-style']}`}
                     onClick={this.handlePopupBeingClicked.bind(this)}>
                     <div>
                         {this.props.children}
@@ -26,7 +26,7 @@ export default class Popup extends React.Component {
             )
         } else {
             return (
-                <div></div>
+                <div className={`popup ${style['module-style']}`} ></div>
             )
         }
     }

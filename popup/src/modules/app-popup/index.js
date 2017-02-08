@@ -8,7 +8,7 @@ const Content = ({children}) => (
 
 const ModuleRoot = () => (
     <div>
-        { [1,2,3].map((v, i)=>(
+        { [1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,4].map((v, i)=>(
             <DeactivateSelfWhenClickOutside key={i} >
                 <Content>{v}</Content>
                 <Popup >{`popup content ${v}`}</Popup>
