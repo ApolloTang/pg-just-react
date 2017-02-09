@@ -3,8 +3,6 @@ if (process && process.env && process.env.CONSOLE_LOG) {
 }
 
 import React, {Component} from 'react';
-import ModuleA from 'modules/module-a';
-import FontTest from 'modules/font-test';
 // import {Demo} from 'modules/deactivate-self-when-click-outside';
 import AppPopup from 'modules/app-popup';
 
